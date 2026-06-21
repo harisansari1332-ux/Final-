@@ -38,104 +38,37 @@
     position:relative;
     overflow:hidden;
   }
-  header.brand .sparkle-line{
-    font-size:11px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:#fff;
-    opacity:.9;
-    font-weight:500;
-    margin-bottom:14px;
-  }
   header.brand h1{
     font-family:'Playfair Display',serif;
     font-weight:800;
     font-size:42px;
-    letter-spacing:1px;
     color:#fff;
-    position:relative;
-    display:inline-block;
-    text-shadow:0 4px 18px rgba(0,0,0,0.12);
-  }
-  header.brand h1 .script{
-    font-style:italic;
-    font-weight:600;
-  }
-  header.brand .divider{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    margin:18px auto 0;
-  }
-  header.brand .divider span{
-    display:block;
-    width:54px;
-    height:1px;
-    background:rgba(255,255,255,0.6);
-  }
-  header.brand .divider .dot{
-    width:6px;height:6px;
-    border-radius:50%;
-    background:#fff;
   }
   header.brand p.tagline{
     font-size:13px;
     letter-spacing:3px;
     text-transform:uppercase;
     color:#fff;
-    opacity:.95;
     margin-top:10px;
-    font-weight:500;
   }
 
   /* ===== SEARCH BAR ===== */
-  .search-wrap{
-    padding:14px 16px 8px;
-  }
+  .search-wrap{ padding:14px 16px 8px; }
   .search-bar{
     display:flex;
     align-items:center;
     background:#FFF;
     border:1.5px solid #f0e6da;
-    box-shadow:0 4px 16px rgba(255,128,0,0.08);
     border-radius:999px;
     padding:12px 18px;
     gap:10px;
   }
-  .search-bar svg{flex-shrink:0;}
-  .search-input-wrap{
-    position:relative;
-    flex:1;
-    height:20px;
-    overflow:hidden;
-  }
+  .search-input-wrap{ position:relative; flex:1; height:20px; }
   .search-input-wrap input{
-    width:100%;
-    border:none;
-    outline:none;
-    background:transparent;
-    font-size:16px;
-    font-family:'Poppins',sans-serif;
-    color:var(--black);
-    position:relative;
-    z-index:2;
-  }
-  .placeholder-fx{
-    position:absolute;
-    left:0;top:0;
-    font-size:16px;
-    color:#aaa;
-    pointer-events:none;
-    z-index:1;
-    white-space:nowrap;
-  }
-  .search-input-wrap input:focus + .placeholder-fx,
-  .search-input-wrap input:not(:placeholder-shown) + .placeholder-fx{
-    display:none;
+    width:100%; border:none; outline:none; background:transparent; font-size:16px;
   }
 
-  /* ===== ACTIVE SESSION BANNER ===== */
+  /* ===== SESSION BANNER ===== */
   .session-banner {
     display: none;
     background: #fff3e0;
@@ -148,371 +81,103 @@
     justify-content: space-between;
   }
   .session-banner button {
-    background: var(--orange);
-    color: #fff;
-    border: none;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    cursor: pointer;
+    background: var(--orange); color: #fff; border: none; padding: 4px 10px; border-radius: 999px; cursor: pointer;
   }
 
   /* ===== CATEGORY TABS ===== */
-  .tabs-wrap{
-    padding:14px 0 6px;
-  }
-  .tabs{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    padding:0 16px 4px;
-    scrollbar-width:none;
-  }
-  .tabs::-webkit-scrollbar{display:none;}
+  .tabs-wrap{ padding:14px 0 6px; }
+  .tabs{ display:flex; gap:10px; overflow-x:auto; padding:0 16px 4px; scrollbar-width:none; }
   .tab{
-    flex-shrink:0;
-    padding:10px 20px;
-    border-radius:999px;
-    font-size:16px;
-    font-weight:500;
-    background:#FFF;
-    color:var(--black);
-    border:1.5px solid #eee;
-    cursor:pointer;
-    transition:background .25s,color .25s,border-color .25s,transform .15s;
-    white-space:nowrap;
-    user-select:none;
+    flex-shrink:0; padding:10px 20px; border-radius:999px; font-size:16px; font-weight:500;
+    background:#FFF; color:var(--black); border:1.5px solid #eee; cursor:pointer;
   }
-  .tab:active{transform:scale(0.96);}
-  .tab.active{
-    background:var(--orange);
-    border-color:var(--orange);
-    color:var(--white);
-    font-weight:600;
-    box-shadow:0 4px 14px rgba(255,128,0,0.35);
-  }
+  .tab.active{ background:var(--orange); border-color:var(--orange); color:var(--white); }
 
-  /* ===== GRID ===== */
-  .menu-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-    padding:14px 16px 30px;
-  }
-
-  /* ===== CARD ===== */
+  /* ===== GRID & CARD ===== */
+  .menu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:14px 16px 30px; }
   .card{
-    background:var(--white);
-    border-radius:24px;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    box-shadow:0 6px 20px rgba(0,0,0,0.06);
-    border:1px solid #f5f0ea;
-    animation:fadeIn .4s ease both;
+    background:var(--white); border-radius:24px; overflow:hidden; display:flex; flex-direction:column;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06); border:1px solid #f5f0ea;
   }
-  @keyframes fadeIn{
-    from{opacity:0;transform:translateY(10px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-
-  .card-thumb{
-    width:100%;
-    aspect-ratio:1/1;
-    position:relative;
-    background:#FFFFFF;
-    overflow:hidden;
-  }
-  .card-thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-  }
-  .badge-3d{
-    position:absolute;
-    top:8px;
-    left:8px;
-    background:var(--orange);
-    color:var(--white);
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1px;
-    padding:4px 9px;
-    border-radius:999px;
-    z-index:5;
-    box-shadow:0 2px 8px rgba(255,128,0,0.4);
-  }
-
-  .card-body{
-    padding:12px 14px 14px;
-    display:flex;
-    flex-direction:column;
-    flex:1;
-    gap:6px;
-  }
-  .card-title{
-    font-size:16px;
-    font-weight:700;
-    line-height:1.25;
-    color:var(--black);
-    min-height:40px;
-  }
-  .card-desc{
-    font-size:12px;
-    font-weight:400;
-    color:#666;
-    line-height:1.35;
-    display:-webkit-box;
-    -webkit-line-clamp:2;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-    min-height:32px;
-  }
-  .card-price{
-    font-size:16px;
-    font-weight:600;
-    color:var(--orange);
-    margin-top:2px;
-  }
-  .card-price span{
-    font-size:12px;
-    color:#aaa;
-    font-weight:400;
-    margin-right:2px;
-  }
-
-  /* ===== CTA BUTTON ===== */
+  .card-thumb{ width:100%; aspect-ratio:1/1; position:relative; }
+  .card-thumb img{ width:100%; height:100%; object-fit:cover; }
+  .badge-3d{ position:absolute; top:8px; left:8px; background:var(--orange); color:#fff; font-size:10px; padding:4px 9px; border-radius:999px; }
+  .card-body{ padding:12px 14px 14px; display:flex; flex-direction:column; flex:1; gap:6px; }
+  .card-title{ font-size:16px; font-weight:700; min-height:40px; }
+  .card-desc{ font-size:12px; color:#666; min-height:32px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .card-price{ font-size:16px; font-weight:600; color:var(--orange); }
   .view-btn{
-    width:100%;
-    height:45px;
-    border-radius:999px;
-    border:1.5px solid var(--orange-light);
-    background:linear-gradient(180deg,#FFFFFF, #FFF6EC);
-    color:var(--black);
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:1px;
-    cursor:pointer;
-    margin-top:8px;
-    transition:background .2s, transform .15s, box-shadow .2s;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-  }
-  .view-btn:active{transform:scale(0.97);}
-  .view-btn:hover{
-    background:var(--orange-light);
-    color:var(--white);
-    box-shadow:0 6px 16px rgba(255,128,0,0.3);
+    width:100%; height:45px; border-radius:999px; border:1.5px solid var(--orange-light);
+    background:#FFF; font-size:13px; font-weight:700; cursor:pointer; margin-top:8px;
   }
 
   /* ===== AR MODAL ===== */
   .ar-modal-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.45);
-    z-index:1000;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .3s ease;
+    position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1000;
+    display:flex; align-items:flex-end; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s ease;
   }
-  .ar-modal-overlay.open{
-    opacity:1;
-    pointer-events:all;
-  }
+  .ar-modal-overlay.open{ opacity:1; pointer-events:all; }
   .ar-modal{
-    width:100%;
-    max-width:520px;
-    background:#FFFFFF;
-    border-radius:28px 28px 0 0;
-    padding:14px 14px 22px;
-    transform:translateY(100%);
-    transition:transform .35s cubic-bezier(.32,.72,0,1);
-    box-shadow:0 -10px 40px rgba(0,0,0,0.2);
-    position: relative;
+    width:100%; max-width:520px; background:#FFFFFF; border-radius:28px 28px 0 0; padding:14px 14px 22px;
+    transform:translateY(100%); transition:transform .35s cubic-bezier(.32,.72,0,1); position: relative;
   }
-  .ar-modal-overlay.open .ar-modal{
-    transform:translateY(0);
-  }
-  .ar-modal-handle{
-    width:42px;height:5px;
-    background:#ddd;
-    border-radius:99px;
-    margin:4px auto 12px;
-  }
-  .ar-modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 6px 10px;
-  }
-  .ar-modal-header h3{
-    font-size:18px;
-    font-weight:700;
-    font-family:'Playfair Display',serif;
-  }
-  .ar-modal-close{
-    width:32px;height:32px;
-    border-radius:50%;
-    background:#f0f0f0;
-    border:none;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;
-  }
+  .ar-modal-overlay.open .ar-modal{ transform:translateY(0); }
+  .ar-modal-header{ display:flex; justify-content:space-between; align-items:center; padding:0 6px 10px; }
+  .ar-modal-close{ width:32px; height:32px; border-radius:50%; background:#f0f0f0; border:none; cursor:pointer; font-size:20px; }
   
-  /* Plus Button Layout Fix */
-  .modal-action-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 10px;
-  }
-
+  /* Plus Button on top right of the 3D space */
   .ar-add-more-btn {
-    background: #f0f0f0;
-    color: var(--black);
-    border: 1px solid #ddd;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s;
-    flex-shrink: 0;
+    position: absolute; top: 80px; right: 25px; background: var(--orange); color: white;
+    border: none; width: 46px; height: 46px; border-radius: 50%; font-size: 24px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1010;
   }
-  .ar-add-more-btn:active { transform: scale(0.9); }
-  .ar-add-more-btn.active-added {
-    background: var(--orange);
-    color: white;
-    border-color: var(--orange);
-  }
+  .ar-add-more-btn.active-added { background: #28a745; }
 
-  /* Multi Model View Area Container */
-  .viewer-container {
-    width: 100%;
-    height: 50vh;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    background: #f9f9f9;
-  }
-  .viewer-container model-viewer {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: transparent !important;
-    --poster-color: transparent;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  .viewer-container model-viewer.visible-model {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .ar-modal-footer{
-    display:flex;
-    gap:10px;
-    margin-top:14px;
-    width: 100%;
-  }
-  .ar-modal-footer button{
-    flex:1;
-    height:46px;
-    border-radius:999px;
-    border:none;
-    font-weight:700;
-    font-size:13px;
-    letter-spacing:1px;
-    cursor:pointer;
-  }
-  .ar-modal-footer .ar-launch{
-    background:var(--orange);
-    color:#fff;
-  }
-  .ar-modal-footer .ar-cancel{
-    background:#fff;
-    color:var(--black);
-    border:1.5px solid #eee;
-  }
-
-  .no-results{
-    grid-column:1/-1;
-    text-align:center;
-    padding:50px 20px;
-    color:#999;
-    font-size:14px;
-  }
+  .ar-modal model-viewer{ width:100%; height:50vh; border-radius:20px; background-color: #fcfcfc !important; }
+  .ar-modal-footer{ display:flex; gap:10px; margin-top:14px; }
+  .ar-modal-footer button{ flex:1; height:46px; border-radius:999px; border:none; font-weight:700; font-size:13px; cursor:pointer; }
+  .ar-modal-footer .ar-launch{ background:var(--orange); color:#fff; }
+  .ar-modal-footer .ar-cancel{ background:#fff; color:var(--black); border:1.5px solid #eee; }
 </style>
 </head>
 <body>
 
 <header class="brand">
-  <div class="sparkle-line">✦ FINE DINING EXPERIENCE ✦</div>
-  <h1>Restaurant <span class="script">Name</span></h1>
+  <h1>Restaurant Name</h1>
   <p class="tagline">AR Menu — See It Before You Order</p>
-  <div class="divider"><span></span><div class="dot"></div><span></span></div>
 </header>
 
 <div class="search-wrap">
   <div class="search-bar">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
     <div class="search-input-wrap">
-      <input type="text" id="searchInput" placeholder=" " autocomplete="off">
-      <span class="placeholder-fx" id="placeholderFx"></span>
+      <input type="text" id="searchInput" placeholder="Search item...">
     </div>
   </div>
 </div>
 
 <div class="session-banner" id="sessionBanner">
-  <span id="sessionText">0 Items selected for table view</span>
+  <span id="sessionText">0 Items selected for Combo View</span>
   <button id="clearSessionBtn">Reset Table</button>
 </div>
 
-<div class="tabs-wrap">
-  <div class="tabs" id="tabs">
-    <div class="tab active" data-cat="All Items">All Items</div>
-    <div class="tab" data-cat="Hot Selling">Hot Selling</div>
-    <div class="tab" data-cat="Pizza">Pizza</div>
-    <div class="tab" data-cat="Burger">Burger</div>
-    <div class="tab" data-cat="Soup">Soup</div>
-    <div class="tab" data-cat="Drink">Drink</div>
-  </div>
-</div>
+<div class="tabs-wrap"><div class="tabs" id="tabs"><div class="tab active" data-cat="All Items">All Items</div><div class="tab" data-cat="Hot Selling">Hot Selling</div><div class="tab" data-cat="Pizza">Pizza</div></div></div>
 
 <div class="menu-grid" id="menuGrid"></div>
 
 <div class="ar-modal-overlay" id="arOverlay">
   <div class="ar-modal">
-    <div class="ar-modal-handle"></div>
     <div class="ar-modal-header">
-      <h3 id="arModalTitle">Item</h3>
+      <h3 id="arModalTitle">Item Preview</h3>
       <button class="ar-modal-close" id="arClose">&times;</button>
     </div>
     
-    <div class="viewer-container" id="viewerContainer">
-       </div>
+    <button class="ar-add-more-btn" id="arAddMore">＋</button>
 
-    <div class="modal-action-row">
-      <button class="ar-add-more-btn" id="arAddMore" title="Add/Remove item from table combo">＋</button>
-      
-      <div class="ar-modal-footer">
-        <button class="ar-cancel" id="arCancel">Close</button>
-        <button class="ar-launch" id="arLaunch">View on Table (AR)</button>
-      </div>
+    <model-viewer id="arModelViewer" camera-controls auto-rotate shadow-intensity="1" exposure="1.2" bounds="tight" interaction-prompt="none"></model-viewer>
+    
+    <div class="ar-modal-footer">
+      <button class="ar-cancel" id="arCancel">Close</button>
+      <button class="ar-launch" id="arLaunch">View on Table (AR)</button>
     </div>
   </div>
 </div>
@@ -523,7 +188,7 @@
 const MENU_DATA = [
   {
     name:"Steam Rice with Roasted Chicken",
-    desc:"Fragrant steamed rice topped with tender roasted chicken, served with house gravy.",
+    desc:"Fragrant steamed rice topped with tender roasted chicken.",
     price:1450,
     category:"Hot Selling",
     image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Steam%20rice%20with%20rosted%20chicken.jpg",
@@ -533,293 +198,59 @@ const MENU_DATA = [
   },
   {
     name:"Chicken_Paprika",
-    desc:"Deliciously seasoned chicken infused with aromatic paprika powder and premium herbs.",
+    desc:"Deliciously seasoned chicken infused with aromatic paprika powder.",
     price:1650,
     category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken_Paprika.glb", 
+    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken_Paprika.jpg", 
     model:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken_Paprika.glb",
     modelIos:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken_Paprika.usdz",
     has3d:true
   },
   {
-    name:"BBQ Platter",
-    desc:"A sizzling assortment of grilled chicken, seekh kabab and tikka with mint chutney.",
-    price:2890,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/BBQ%20Platter.jpeg",
-    has3d:false
-  },
-  {
-    name:"Chicken Chilli Dry",
-    desc:"Crispy chicken tossed in a tangy chilli-garlic glaze with bell peppers.",
-    price:1150,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken%20Chilli%20Dry.jpeg",
-    has3d:false
-  },
-  {
-    name:"Chicken Manchurian",
-    desc:"Wok-tossed chicken balls in a savory sweet & spicy Manchurian sauce.",
-    price:1180,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken%20Manchurian.jpeg",
-    has3d:false
-  },
-  {
-    name:"Chiken Biryani",
-    desc:"Aromatic basmati rice layered with spiced chicken and fried onions.",
-    price:990,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chiken%20Biryani.jpeg",
-    has3d:false
-  },
-  {
-    name:"Chiken Karahi",
-    desc:"Traditional wok-cooked chicken simmered in tomato, ginger and green chillies.",
-    price:1850,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chiken%20Karahi.jpg",
-    has3d:false
-  },
-  {
-    name:"Crispy Honey Chicken",
-    desc:"Golden fried chicken glazed with a sticky honey-sesame sauce.",
-    price:1250,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Crispy%20Honey%20Chicken.jpeg",
-    has3d:false
-  },
-  {
-    name:"Red Dragon Chicken",
-    desc:"Fiery battered chicken coated in a bold red dragon chilli sauce.",
-    price:1320,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Red%20Dragon%20Chicken.jpeg",
-    has3d:false
-  },
-  {
-    name:"Sekh Kabab",
-    desc:"Char-grilled minced meat skewers infused with traditional spices.",
-    price:1490,
-    category:"Hot Selling",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Sekh%20Kabab.jpeg",
-    has3d:false
-  },
-  {
     name:"Fajita Pizza",
-    desc:"Loaded with spicy chicken fajita, peppers, onions and mozzarella.",
+    desc:"Loaded with spicy chicken fajita, peppers and mozzarella.",
     price:1950,
     category:"Pizza",
     image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Fajita%20pizza.jpg",
     model:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Fajita%20pizza.glb",
     modelIos:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Fajita%20pizza.usdz",
     has3d:true
-  },
-  {
-    name:"Chicken Tikka Pizza",
-    desc:"Smoky chicken tikka chunks over a creamy garlic sauce base.",
-    price:1750,
-    category:"Pizza",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken%20Tikka%20Pizza%20.jpg",
-    has3d:false
-  },
-  {
-    name:"Malai Boti Pizza",
-    desc:"Creamy malai boti pieces with mozzarella and a hint of black pepper.",
-    price:1890,
-    category:"Pizza",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Malai%20Boti%20pizza.jpg",
-    has3d:false
-  },
-  {
-    name:"Classic Burger",
-    desc:"Classic grilled chicken/beef patty with lettuce, tomato and house sauce.",
-    price:900,
-    category:"Burger",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Burger.jpg",
-    has3d:false
-  },
-  {
-    name:"Cheese Burger",
-    desc:"Juicy beef patty topped with melted cheddar and pickles.",
-    price:980,
-    category:"Burger",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Cheese%20Burger.jpg",
-    has3d:false
-  },
-  {
-    name:"Zinger Burger",
-    desc:"Crispy spicy fried chicken fillet with mayo and fresh lettuce.",
-    price:1050,
-    category:"Burger",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Zinger%20Burger.jpeg",
-    has3d:false
-  },
-  {
-    name:"Zinger Deal",
-    desc:"Zinger burger paired with fries and a refreshing drink.",
-    price:1350,
-    category:"Burger",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Zinger%20deal.jpeg",
-    has3d:false
-  },
-  {
-    name:"Zinger Platter",
-    desc:"Two zinger fillets served with fries, coleslaw and dip.",
-    price:1650,
-    category:"Burger",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Zinger%20platter.jpeg",
-    has3d:false
-  },
-  {
-    name:"Chicken Corn Soup",
-    desc:"Comforting shredded chicken and sweet corn in a silky broth.",
-    price:950,
-    category:"Soup",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Chicken%20corn%20soup%20.jpeg",
-    has3d:false
-  },
-  {
-    name:"Cream of Mushrooms Soup",
-    desc:"Velvety blended mushroom soup finished with fresh cream.",
-    price:1020,
-    category:"Soup",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Cream%20of%20mushrooms%20soup.jpeg",
-    has3d:false
-  },
-  {
-    name:"Hot and Sour Soup",
-    desc:"Spicy and tangy broth with shredded chicken, egg and vegetables.",
-    price:980,
-    category:"Soup",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Hot%20and%20sour%20soup.jpeg",
-    has3d:false
-  },
-  {
-    name:"Thai Soup",
-    desc:"Aromatic Thai-style soup with lemongrass, chicken and herbs.",
-    price:1060,
-    category:"Soup",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Thai%20soup.jpeg",
-    has3d:false
-  },
-  {
-    name:"Lassi",
-    desc:"Traditional chilled yogurt drink, sweet and refreshing.",
-    price:890,
-    category:"Drink",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Lassi.jpg",
-    has3d:false
-  },
-  {
-    name:"Mint Margarita",
-    desc:"Cool minty citrus mocktail, the perfect summer refresher.",
-    price:920,
-    category:"Drink",
-    image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Mint%20margrita.jpg",
-    has3d:false
   }
 ];
 
-/* =========================================================
-   MULTI-MODEL AR WORKFLOW TRACKER
-========================================================= */
-let selectedModelsTrack = []; 
+let selectedComboItems = []; 
 const sessionBanner = document.getElementById('sessionBanner');
 const sessionText = document.getElementById('sessionText');
 const clearSessionBtn = document.getElementById('clearSessionBtn');
 
 function updateSessionUI() {
-  if (selectedModelsTrack.length > 0) {
+  if (selectedComboItems.length > 0) {
     sessionBanner.style.display = 'flex';
-    sessionText.textContent = `${selectedModelsTrack.length} Item(s) ready for multi-AR display.`;
+    sessionText.textContent = `${selectedComboItems.length} Item(s) ready for combined table view.`;
   } else {
     sessionBanner.style.display = 'none';
   }
 }
 
-clearSessionBtn.addEventListener('click', () => {
-  selectedModelsTrack = [];
-  updateSessionUI();
-  renderGrid();
-});
+clearSessionBtn.addEventListener('click', () => { selectedComboItems = []; updateSessionUI(); });
 
-/* =========================================================
-   TYPING PLACEHOLDER EFFECT
-========================================================= */
-const placeholderItems = ["Chicken_Paprika", "Fajita Pizza", "BBQ Platter", "Zinger Burger"];
-const fx = document.getElementById('placeholderFx');
-let pIdx = 0, charIdx = 0, deleting = false;
-
-function typeLoop(){
-  const word = "Search “" + placeholderItems[pIdx] + "”";
-  if(!deleting){
-    charIdx++;
-    fx.textContent = word.slice(0, charIdx);
-    if(charIdx === word.length){
-      deleting = true;
-      setTimeout(typeLoop, 1400);
-      return;
-    }
-  } else {
-    charIdx--;
-    fx.textContent = word.slice(0, charIdx);
-    if(charIdx === 0){
-      deleting = false;
-      pIdx = (pIdx + 1) % placeholderItems.length;
-    }
-  }
-  setTimeout(typeLoop, deleting ? 35 : 65);
-}
-typeLoop();
-
-/* =========================================================
-   RENDER GRID
-========================================================= */
+/* ===== RENDER MENU ===== */
 const grid = document.getElementById('menuGrid');
-let currentCategory = "All Items";
-let currentSearch = "";
-
-function getFilteredItems(){
-  let items = MENU_DATA;
-  if(currentCategory !== "All Items"){
-    items = items.filter(i => i.category === currentCategory);
-  }
-  if(currentSearch.trim() !== ""){
-    const q = currentSearch.trim().toLowerCase();
-    items = items.filter(i => i.name.toLowerCase().includes(q));
-  }
-  return [...items].sort((a,b) => (b.has3d === true) - (a.has3d === true));
-}
-
 function renderGrid(){
-  const items = getFilteredItems();
   grid.innerHTML = "";
-
-  if(items.length === 0){
-    grid.innerHTML = `<div class="no-results">No items found in this category.</div>`;
-    return;
-  }
-
-  items.forEach((item, idx) => {
+  MENU_DATA.forEach((item) => {
     const card = document.createElement('div');
     card.className = "card";
-    card.style.animationDelay = (idx * 0.03) + "s";
-
-    let thumbHtml = `
+    card.innerHTML = `
       <div class="card-thumb">
         ${item.has3d ? '<span class="badge-3d">3D / AR</span>' : ''}
-        <img src="${item.image}" alt="${item.name}" loading="${idx < 4 ? 'eager' : 'lazy'}"
-             onerror="this.style.background='#F5F0EA';">
-      </div>`;
-
-    card.innerHTML = `
-      ${thumbHtml}
+        <img src="${item.image}">
+      </div>
       <div class="card-body">
         <div class="card-title">${item.name}</div>
         <div class="card-desc">${item.desc}</div>
-        <div class="card-price"><span>Rs.</span>${item.price.toLocaleString()}</div>
-        <button class="view-btn" data-idx="${MENU_DATA.indexOf(item)}">VIEW ON TABLE</button>
+        <div class="card-price">Rs. ${item.price}</div>
+        <button class="view-btn" data-name="${item.name}">VIEW ON TABLE</button>
       </div>
     `;
     grid.appendChild(card);
@@ -827,143 +258,97 @@ function renderGrid(){
 
   grid.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const item = MENU_DATA[btn.dataset.idx];
+      const item = MENU_DATA.find(i => i.name === btn.dataset.name);
       handleViewOnTable(item);
     });
   });
 }
 
-/* =========================================================
-   AR / MULTI-MODEL PREVIEW MANAGEMENT
-========================================================= */
+/* ===== AR TRIGGER WITH MULTI-MODEL ACTION ===== */
 const arOverlay = document.getElementById('arOverlay');
-const viewerContainer = document.getElementById('viewerContainer');
+const arModelViewer = document.getElementById('arModelViewer');
 const arModalTitle = document.getElementById('arModalTitle');
 const arLaunch = document.getElementById('arLaunch');
-const arClose = document.getElementById('arClose');
-const arCancel = document.getElementById('arCancel');
 const arAddMore = document.getElementById('arAddMore');
 
-let lastSelectedActiveItem = null;
+let lastActiveItem = null;
 
 function handleViewOnTable(item){
-  lastSelectedActiveItem = item;
+  lastActiveItem = item;
   arModalTitle.textContent = item.name;
-  viewerContainer.innerHTML = ""; 
 
-  if(!item.has3d){
-    // Fallback static image view
-    viewerContainer.innerHTML = `<img src="${item.image}" style="width:100%; height:100%; object-fit:contain; background:#FFF;">`;
-    arLaunch.style.display = 'none';
-    arAddMore.style.display = 'none';
-    arOverlay.classList.add('open');
-    return;
-  }
+  arModelViewer.setAttribute('src', item.model);
+  arModelViewer.setAttribute('poster', item.image);
 
-  arLaunch.style.display = 'block';
-  arAddMore.style.display = 'flex';
-
-  // Check if this item is already added to session stack
-  if (selectedModelsTrack.includes(item)) {
-    arAddMore.textContent = "✓ Added";
+  if(selectedComboItems.includes(item)) {
+    arAddMore.textContent = "✓";
     arAddMore.classList.add('active-added');
   } else {
     arAddMore.textContent = "＋";
     arAddMore.classList.remove('active-added');
   }
-
-  // Load all currently tracked items + this main item into a side-by-side or stacked viewer scene
-  let uniqueDisplayItems = [...selectedModelsTrack];
-  if (!uniqueDisplayItems.includes(item)) {
-    uniqueDisplayItems.push(item);
-  }
-
-  // Generate dynamic overlay viewers so everything renders simultaneously inside the same boundary box
-  uniqueDisplayItems.forEach((displayItem, dIdx) => {
-    const mv = document.createElement('model-viewer');
-    mv.setAttribute('src', displayItem.model);
-    mv.setAttribute('ios-src', displayItem.modelIos);
-    mv.setAttribute('alt', displayItem.name);
-    mv.setAttribute('camera-controls', '');
-    mv.setAttribute('auto-rotate', '');
-    mv.setAttribute('shadow-intensity', '1');
-    mv.setAttribute('exposure', '1.2');
-    mv.setAttribute('interaction-prompt', 'none');
-    mv.className = "visible-model";
-    
-    // Simple custom layout offset adjustments so they don't look completely stacked directly behind each other
-    if(dIdx > 0) {
-      mv.setAttribute('camera-orbit', `${dIdx * 45}deg 75deg 105%`);
-    }
-
-    viewerContainer.appendChild(mv);
-  });
-
-  // Native trigger launching multiple elements context
-  arLaunch.onclick = () => {
-    if(!selectedModelsTrack.includes(item)) {
-      selectedModelsTrack.push(item);
-    }
-    updateSessionUI();
-    
-    // Find first active model-viewer element to use system intent launcher
-    const targetViewer = viewerContainer.querySelector('model-viewer');
-    if(targetViewer && typeof targetViewer.activateAR === 'function'){
-       targetViewer.activateAR();
-    }
-  };
 
   arOverlay.classList.add('open');
+
+  // TRIGGER REAL MULTI-MODEL ON CLICK
+  arLaunch.onclick = () => {
+    // Agar list mein ye item pehle se nahi hai toh add kar dein
+    if(!selectedComboItems.includes(item)) {
+      selectedComboItems.push(item);
+    }
+    updateSessionUI();
+
+    // Check if user is on iOS or Android
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    if (isIOS) {
+      // iOS Multi-model Quick Look Code
+      let iosUrl = item.modelIos;
+      if(selectedComboItems.length > 1) {
+         // Create checkout map style structure for Apple
+         iosUrl = selectedComboItems.map(i => i.modelIos).join(';'); 
+      }
+      const anchor = document.createElement('a');
+      anchor.setAttribute('rel', 'ar');
+      anchor.setAttribute('href', iosUrl);
+      anchor.appendChild(document.createElement('img'));
+      anchor.click();
+    } else {
+      // Android Multi-model Scene Viewer Native Intent Code
+      if(selectedComboItems.length > 1) {
+         let intentUrl = `intent://arvr.google.com/scene-viewer/1.0?`;
+         selectedComboItems.forEach((i, index) => {
+            intentUrl += `file=${encodeURIComponent(i.model)}&title=${encodeURIComponent(i.name)}&`;
+         });
+         intentUrl += `mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;end;`;
+         window.location.href = intentUrl;
+      } else {
+         // Single Model Launch
+         if(typeof arModelViewer.activateAR === 'function'){
+            arModelViewer.activateAR();
+         }
+      }
+    }
+  };
 }
 
-// Plus Button Toggle behavior
 arAddMore.addEventListener('click', () => {
-  if (!lastSelectedActiveItem) return;
-
-  const matchIdx = selectedModelsTrack.indexOf(lastSelectedActiveItem);
+  if (!lastActiveItem) return;
+  const matchIdx = selectedComboItems.indexOf(lastActiveItem);
   if (matchIdx > -1) {
-    // Remove if already exists
-    selectedModelsTrack.splice(matchIdx, 1);
+    selectedComboItems.splice(matchIdx, 1);
     arAddMore.textContent = "＋";
     arAddMore.classList.remove('active-added');
   } else {
-    // Add to stack
-    selectedModelsTrack.push(lastSelectedActiveItem);
-    arAddMore.textContent = "✓ Added";
+    selectedComboItems.push(lastActiveItem);
+    arAddMore.textContent = "✓";
     arAddMore.classList.add('active-added');
   }
-  
   updateSessionUI();
-  // Refresh modal window view to reflect added models stack inside the single window
-  handleViewOnTable(lastSelectedActiveItem);
 });
 
-function closeFallback(){
-  arOverlay.classList.remove('open');
-}
-
-arClose.addEventListener('click', closeFallback);
-arCancel.addEventListener('click', closeFallback);
-arOverlay.addEventListener('click', (e) => {
-  if(e.target === arOverlay) closeFallback();
-});
-
-/* =========================================================
-   TABS & SEARCH INITIALIZATION
-========================================================= */
-document.getElementById('tabs').addEventListener('click', (e) => {
-  const tab = e.target.closest('.tab');
-  if(!tab) return;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active');
-  currentCategory = tab.dataset.cat;
-  renderGrid();
-});
-
-document.getElementById('searchInput').addEventListener('input', (e) => {
-  currentSearch = e.target.value;
-  renderGrid();
-});
+document.getElementById('arClose').addEventListener('click', () => arOverlay.classList.remove('open'));
+document.getElementById('arCancel').addEventListener('click', () => arOverlay.classList.remove('open'));
 
 renderGrid();
 </script>
