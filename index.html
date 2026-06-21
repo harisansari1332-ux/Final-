@@ -99,7 +99,7 @@
     background:#FFF;
     border:1.5px solid #f0e6da;
     box-shadow:0 4px 16px rgba(255,128,0,0.08);
-    border-radius999px;
+    border-radius:999px;
     padding:12px 18px;
     gap:10px;
   }
@@ -229,13 +229,6 @@
     height:100%;
     object-fit:cover;
     display:block;
-  }
-  .card-thumb model-viewer{
-    width:100%;
-    height:100%;
-    display:block;
-    background-color: transparent !important;
-    --poster-color: transparent;
   }
   .badge-3d{
     position:absolute;
@@ -373,39 +366,68 @@
     cursor:pointer;
   }
   
-  /* Plus Button Inside Modal View Area */
+  /* Plus Button Layout Fix */
+  .modal-action-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
   .ar-add-more-btn {
-    position: absolute;
-    top: 80px;
-    right: 25px;
-    background: var(--orange);
-    color: white;
-    border: none;
-    width: 48px;
-    height: 48px;
+    background: #f0f0f0;
+    color: var(--black);
+    border: 1px solid #ddd;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    z-index: 1010;
+    transition: background 0.2s;
+    flex-shrink: 0;
   }
   .ar-add-more-btn:active { transform: scale(0.9); }
-
-  .ar-modal model-viewer{
-    width:100%;
-    height:50vh;
-    border-radius:20px;
-    background-color: #FFFFFF !important;
-    --poster-color: transparent;
+  .ar-add-more-btn.active-added {
+    background: var(--orange);
+    color: white;
+    border-color: var(--orange);
   }
+
+  /* Multi Model View Area Container */
+  .viewer-container {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f9f9f9;
+  }
+  .viewer-container model-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent !important;
+    --poster-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .viewer-container model-viewer.visible-model {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .ar-modal-footer{
     display:flex;
     gap:10px;
     margin-top:14px;
+    width: 100%;
   }
   .ar-modal-footer button{
     flex:1;
@@ -455,9 +477,8 @@
   </div>
 </div>
 
-<!-- Session Active Informer Bar -->
 <div class="session-banner" id="sessionBanner">
-  <span id="sessionText">1 Item selected for table view</span>
+  <span id="sessionText">0 Items selected for table view</span>
   <button id="clearSessionBtn">Reset Table</button>
 </div>
 
@@ -482,22 +503,16 @@
       <button class="ar-modal-close" id="arClose">&times;</button>
     </div>
     
-    <!-- Corner Plus Icon Button -->
-    <button class="ar-add-more-btn" id="arAddMore" title="Add more items to table">＋</button>
+    <div class="viewer-container" id="viewerContainer">
+       </div>
 
-    <model-viewer id="arModelViewer"
-      camera-controls
-      auto-rotate
-      auto-rotate-delay="0"
-      shadow-intensity="1"
-      exposure="1.2"
-      bounds="tight"
-      environment-image="neutral"
-      interaction-prompt="none">
-    </model-viewer>
-    <div class="ar-modal-footer">
-      <button class="ar-cancel" id="arCancel">Close</button>
-      <button class="ar-launch" id="arLaunch">View on Table (AR)</button>
+    <div class="modal-action-row">
+      <button class="ar-add-more-btn" id="arAddMore" title="Add/Remove item from table combo">＋</button>
+      
+      <div class="ar-modal-footer">
+        <button class="ar-cancel" id="arCancel">Close</button>
+        <button class="ar-launch" id="arLaunch">View on Table (AR)</button>
+      </div>
     </div>
   </div>
 </div>
@@ -506,7 +521,6 @@
 
 <script>
 const MENU_DATA = [
-  // ---------- HOT SELLING ----------
   {
     name:"Steam Rice with Roasted Chicken",
     desc:"Fragrant steamed rice topped with tender roasted chicken, served with house gravy.",
@@ -591,8 +605,6 @@ const MENU_DATA = [
     image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Sekh%20Kabab.jpeg",
     has3d:false
   },
-
-  // ---------- PIZZA ----------
   {
     name:"Fajita Pizza",
     desc:"Loaded with spicy chicken fajita, peppers, onions and mozzarella.",
@@ -619,8 +631,6 @@ const MENU_DATA = [
     image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Malai%20Boti%20pizza.jpg",
     has3d:false
   },
-
-  // ---------- BURGER ----------
   {
     name:"Classic Burger",
     desc:"Classic grilled chicken/beef patty with lettuce, tomato and house sauce.",
@@ -661,8 +671,6 @@ const MENU_DATA = [
     image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Zinger%20platter.jpeg",
     has3d:false
   },
-
-  // ---------- SOUP ----------
   {
     name:"Chicken Corn Soup",
     desc:"Comforting shredded chicken and sweet corn in a silky broth.",
@@ -695,8 +703,6 @@ const MENU_DATA = [
     image:"https://raw.githubusercontent.com/harisansari1332-ux/Demo-menu/main/Thai%20soup.jpeg",
     has3d:false
   },
-
-  // ---------- DRINK ----------
   {
     name:"Lassi",
     desc:"Traditional chilled yogurt drink, sweet and refreshing.",
@@ -726,7 +732,7 @@ const clearSessionBtn = document.getElementById('clearSessionBtn');
 function updateSessionUI() {
   if (selectedModelsTrack.length > 0) {
     sessionBanner.style.display = 'flex';
-    sessionText.textContent = `${selectedModelsTrack.length} Item(s) ready to place on table juntos.`;
+    sessionText.textContent = `${selectedModelsTrack.length} Item(s) ready for multi-AR display.`;
   } else {
     sessionBanner.style.display = 'none';
   }
@@ -735,12 +741,13 @@ function updateSessionUI() {
 clearSessionBtn.addEventListener('click', () => {
   selectedModelsTrack = [];
   updateSessionUI();
+  renderGrid();
 });
 
 /* =========================================================
    TYPING PLACEHOLDER EFFECT
 ========================================================= */
-const placeholderItems = ["Chicken_Paprika", "Fajita Pizza", "BBQ Platter", "Zinger Burger", "Steam Rice with Roasted Chicken"];
+const placeholderItems = ["Chicken_Paprika", "Fajita Pizza", "BBQ Platter", "Zinger Burger"];
 const fx = document.getElementById('placeholderFx');
 let pIdx = 0, charIdx = 0, deleting = false;
 
@@ -785,13 +792,6 @@ function getFilteredItems(){
   return [...items].sort((a,b) => (b.has3d === true) - (a.has3d === true));
 }
 
-function detectAR(){
-  const ua = navigator.userAgent || "";
-  const isIOS = /iPad|iPhone|iPod/.test(ua);
-  const isAndroid = /Android/.test(ua);
-  return { isIOS, isAndroid, supportsAR: isIOS || isAndroid };
-}
-
 function renderGrid(){
   const items = getFilteredItems();
   grid.innerHTML = "";
@@ -806,40 +806,12 @@ function renderGrid(){
     card.className = "card";
     card.style.animationDelay = (idx * 0.03) + "s";
 
-    let thumbHtml = "";
-    if(item.has3d){
-      thumbHtml = `
-        <div class="card-thumb">
-          <span class="badge-3d">3D / AR</span>
-          <model-viewer
-            src="${item.model}"
-            ios-src="${item.modelIos}"
-            poster="${item.image}"
-            alt="${item.name}"
-            loading="eager"
-            reveal="auto"
-            camera-controls
-            interaction-prompt="none"
-            disable-zoom
-            shadow-intensity="1"
-            exposure="1.2"
-            bounds="tight"
-            auto-rotate
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            style="--min-camera-orbit: auto auto 50%; --max-camera-orbit: auto auto 100%;"
-            data-name="${item.name}"
-            data-model="${item.model}"
-            data-ios="${item.modelIos}"
-          ></model-viewer>
-        </div>`;
-    } else {
-      thumbHtml = `
-        <div class="card-thumb">
-          <img src="${item.image}" alt="${item.name}" loading="${idx < 4 ? 'eager' : 'lazy'}"
-               onerror="this.style.display='none'; this.parentElement.style.background='#FFFFFF';">
-        </div>`;
-    }
+    let thumbHtml = `
+      <div class="card-thumb">
+        ${item.has3d ? '<span class="badge-3d">3D / AR</span>' : ''}
+        <img src="${item.image}" alt="${item.name}" loading="${idx < 4 ? 'eager' : 'lazy'}"
+             onerror="this.style.background='#F5F0EA';">
+      </div>`;
 
     card.innerHTML = `
       ${thumbHtml}
@@ -862,10 +834,10 @@ function renderGrid(){
 }
 
 /* =========================================================
-   AR / FALLBACK HANDLER
+   AR / MULTI-MODEL PREVIEW MANAGEMENT
 ========================================================= */
 const arOverlay = document.getElementById('arOverlay');
-const arModelViewer = document.getElementById('arModelViewer');
+const viewerContainer = document.getElementById('viewerContainer');
 const arModalTitle = document.getElementById('arModalTitle');
 const arLaunch = document.getElementById('arLaunch');
 const arClose = document.getElementById('arClose');
@@ -875,60 +847,95 @@ const arAddMore = document.getElementById('arAddMore');
 let lastSelectedActiveItem = null;
 
 function handleViewOnTable(item){
+  lastSelectedActiveItem = item;
+  arModalTitle.textContent = item.name;
+  viewerContainer.innerHTML = ""; 
+
   if(!item.has3d){
-    openFallback(item, false);
+    // Fallback static image view
+    viewerContainer.innerHTML = `<img src="${item.image}" style="width:100%; height:100%; object-fit:contain; background:#FFF;">`;
+    arLaunch.style.display = 'none';
+    arAddMore.style.display = 'none';
+    arOverlay.classList.add('open');
     return;
   }
 
-  lastSelectedActiveItem = item;
-  openFallback(item, true);
-}
+  arLaunch.style.display = 'block';
+  arAddMore.style.display = 'flex';
 
-function openFallback(item, has3d){
-  arModalTitle.textContent = item.name;
-
-  if(has3d){
-    arModelViewer.setAttribute('src', item.model);
-    arModelViewer.setAttribute('ios-src', item.modelIos);
-    arModelViewer.setAttribute('poster', item.image);
-    arModelViewer.setAttribute('ar', '');
-    arModelViewer.setAttribute('ar-modes', 'webxr scene-viewer quick-look');
-    arLaunch.style.display = 'block';
-    arAddMore.style.display = 'flex';
-    
-    arLaunch.onclick = () => {
-      // Multi-Model Processing Trigger
-      if(!selectedModelsTrack.includes(item)) {
-        selectedModelsTrack.push(item);
-      }
-      updateSessionUI();
-      
-      const { isIOS, isAndroid } = detectAR();
-      
-      // If native WebXR is running on supported engine
-      if(typeof arModelViewer.activateAR === 'function'){
-         arModelViewer.activateAR();
-      }
-    };
+  // Check if this item is already added to session stack
+  if (selectedModelsTrack.includes(item)) {
+    arAddMore.textContent = "✓ Added";
+    arAddMore.classList.add('active-added');
   } else {
-    arModelViewer.removeAttribute('src');
-    arModelViewer.removeAttribute('ios-src');
-    arModelViewer.setAttribute('poster', item.image);
-    arModelViewer.removeAttribute('ar');
-    arLaunch.style.display = 'none';
-    arAddMore.style.display = 'none';
+    arAddMore.textContent = "＋";
+    arAddMore.classList.remove('active-added');
   }
+
+  // Load all currently tracked items + this main item into a side-by-side or stacked viewer scene
+  let uniqueDisplayItems = [...selectedModelsTrack];
+  if (!uniqueDisplayItems.includes(item)) {
+    uniqueDisplayItems.push(item);
+  }
+
+  // Generate dynamic overlay viewers so everything renders simultaneously inside the same boundary box
+  uniqueDisplayItems.forEach((displayItem, dIdx) => {
+    const mv = document.createElement('model-viewer');
+    mv.setAttribute('src', displayItem.model);
+    mv.setAttribute('ios-src', displayItem.modelIos);
+    mv.setAttribute('alt', displayItem.name);
+    mv.setAttribute('camera-controls', '');
+    mv.setAttribute('auto-rotate', '');
+    mv.setAttribute('shadow-intensity', '1');
+    mv.setAttribute('exposure', '1.2');
+    mv.setAttribute('interaction-prompt', 'none');
+    mv.className = "visible-model";
+    
+    // Simple custom layout offset adjustments so they don't look completely stacked directly behind each other
+    if(dIdx > 0) {
+      mv.setAttribute('camera-orbit', `${dIdx * 45}deg 75deg 105%`);
+    }
+
+    viewerContainer.appendChild(mv);
+  });
+
+  // Native trigger launching multiple elements context
+  arLaunch.onclick = () => {
+    if(!selectedModelsTrack.includes(item)) {
+      selectedModelsTrack.push(item);
+    }
+    updateSessionUI();
+    
+    // Find first active model-viewer element to use system intent launcher
+    const targetViewer = viewerContainer.querySelector('model-viewer');
+    if(targetViewer && typeof targetViewer.activateAR === 'function'){
+       targetViewer.activateAR();
+    }
+  };
 
   arOverlay.classList.add('open');
 }
 
-// Plus Button Event Handler - Main page par wapas le jaye aur stack record kare
+// Plus Button Toggle behavior
 arAddMore.addEventListener('click', () => {
-  if (lastSelectedActiveItem && !selectedModelsTrack.includes(lastSelectedActiveItem)) {
+  if (!lastSelectedActiveItem) return;
+
+  const matchIdx = selectedModelsTrack.indexOf(lastSelectedActiveItem);
+  if (matchIdx > -1) {
+    // Remove if already exists
+    selectedModelsTrack.splice(matchIdx, 1);
+    arAddMore.textContent = "＋";
+    arAddMore.classList.remove('active-added');
+  } else {
+    // Add to stack
     selectedModelsTrack.push(lastSelectedActiveItem);
+    arAddMore.textContent = "✓ Added";
+    arAddMore.classList.add('active-added');
   }
+  
   updateSessionUI();
-  closeFallback();
+  // Refresh modal window view to reflect added models stack inside the single window
+  handleViewOnTable(lastSelectedActiveItem);
 });
 
 function closeFallback(){
@@ -942,7 +949,7 @@ arOverlay.addEventListener('click', (e) => {
 });
 
 /* =========================================================
-   TABS
+   TABS & SEARCH INITIALIZATION
 ========================================================= */
 document.getElementById('tabs').addEventListener('click', (e) => {
   const tab = e.target.closest('.tab');
@@ -953,17 +960,11 @@ document.getElementById('tabs').addEventListener('click', (e) => {
   renderGrid();
 });
 
-/* =========================================================
-   SEARCH
-========================================================= */
 document.getElementById('searchInput').addEventListener('input', (e) => {
   currentSearch = e.target.value;
   renderGrid();
 });
 
-/* =========================================================
-   INIT
-========================================================= */
 renderGrid();
 </script>
 </body>
